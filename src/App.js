@@ -2,27 +2,27 @@ import React,{useState} from "react";
 import ButtonGrid from "./components/ButtonGrid";
 import {FaShoppingCart} from 'react-icons/fa'
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <div>
       <nav className="navbar navbar-light bg-light justify-content-start mb-2">
         <span className="navbar-brand h1"><FaShoppingCart/></span>
-        <span className="badge badge-pill badge-info">2</span>
+  <span className="badge badge-pill badge-info">{props.noi}</span>
         Items
       </nav>
     </div>
   );
 };
 
-
-
 function App() {
 
-  const [noi,Setnoi]= useState(0)
+  const [noi,Setnoi]= useState(0);
 
   const handleNoi = (newValue) => {
-    Setnoi(newValue)
+    console.log({noi,newValue})
+    Setnoi(noi + newValue)
   }
+
 
   return (
     <div>

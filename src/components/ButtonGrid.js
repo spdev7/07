@@ -4,34 +4,34 @@ import { GrRefresh } from "react-icons/gr";
 import ButtonSet from "./ButtonSet";
 
 const ButtonGrid = (props) => {
-  // const [refresh, setRefresh] = useState(false);
+  const [refresh, setRefresh] = useState(false);
   const [count, setCount] = useState(4);
-  const { handlenNoi } = props;
+  const { handleNoi } = props;
   const [bs, setBs] = useState([]);
-
-  const renderBS = (count, setCount) => {
+  
+  const renderBS = (count, setCount,refresh,handleNoi) => {
     let arr = [];
-
     for (let i = 0; i < count; i++) {
-      arr.push(<ButtonSet count={count} setCount={setCount} />);
+      arr.push(<ButtonSet key={i} count={count} setCount={setCount} handleNoi={handleNoi} refresh={refresh} />);
     }
     return arr && arr.map((ele) => ele);
   };
 
   useEffect(() => {
-    setBs(renderBS(count, setCount));
-  }, []);
+    setBs(renderBS(count, setCount,refresh,handleNoi));
+  }, [refresh,count]);
 
 
-  return (
+  return ( 
     <div>
       <div className="row justify-content-center">
-        <button className="btn btn-success" onClick={() => console.log("s")}>
+        <button className="btn btn-success" onClick={() => {setRefresh(!refresh);renderBS(count, setCount,refresh,handleNoi);}}>
           <GrRefresh />
         </button>
         <button
           className="btn btn-primary"
-          onClick={() => renderBS(count, setCount(4))}
+          onClick={() => renderBS(count, setCount(4),refresh,handleNoi)}
+          disabled={count !== 0 ? true : false}
         >
           <FaRecycle />
         </button>

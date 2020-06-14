@@ -7,7 +7,7 @@ const Navbar = (props) => {
     <div>
       <nav className="navbar navbar-light bg-light justify-content-start mb-2">
         <span className="navbar-brand h1"><FaShoppingCart/></span>
-  <span className="badge badge-pill badge-info">{props.noi}</span>
+        <span className="badge badge-pill badge-info">{props.noi}</span>
         Items
       </nav>
     </div>
@@ -17,10 +17,18 @@ const Navbar = (props) => {
 function App() {
 
   const [noi,Setnoi]= useState(0);
+  const count = new Set()
 
-  const handleNoi = (newValue) => {
-    console.log({noi,newValue})
-    Setnoi(noi + newValue)
+  const handleNoi = (newValue,i) => {
+    console.log({noi,newValue,i})
+    if(newValue == 1){
+      count.add(i)
+    }
+    if(newValue == -1){
+      count.delete(i)
+    }
+    console.log(count)
+    Setnoi(count.size)
   }
 
 

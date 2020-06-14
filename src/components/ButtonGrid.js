@@ -8,29 +8,44 @@ const ButtonGrid = (props) => {
   const [count, setCount] = useState(4);
   const { handleNoi } = props;
   const [bs, setBs] = useState([]);
-  
-  const renderBS = (count, setCount,refresh,handleNoi) => {
+
+  const renderBS = (count, setCount, refresh, handleNoi) => {
     let arr = [];
+
     for (let i = 0; i < count; i++) {
-      arr.push(<ButtonSet key={i} count={count} setCount={setCount} handleNoi={handleNoi} refresh={refresh} />);
+      arr.push(
+        <ButtonSet
+          key={i}
+          i={i}
+          count={count}
+          setCount={setCount}
+          handleNoi={handleNoi}
+          refresh={refresh}
+        />
+      );
     }
     return arr && arr.map((ele) => ele);
   };
 
   useEffect(() => {
-    setBs(renderBS(count, setCount,refresh,handleNoi));
-  }, [refresh,count]);
+    setBs(renderBS(count, setCount, refresh, handleNoi));
+  }, [refresh, count]);
 
-
-  return ( 
+  return (
     <div>
       <div className="row justify-content-center">
-        <button className="btn btn-success" onClick={() => {setRefresh(!refresh);renderBS(count, setCount,refresh,handleNoi);}}>
+        <button
+          className="btn btn-success"
+          onClick={() => {
+            setRefresh(!refresh);
+            renderBS(count, setCount, refresh, handleNoi);
+          }}
+        >
           <GrRefresh />
         </button>
         <button
           className="btn btn-primary"
-          onClick={() => renderBS(count, setCount(4),refresh,handleNoi)}
+          onClick={() => renderBS(count, setCount(4), refresh, handleNoi)}
           disabled={count !== 0 ? true : false}
         >
           <FaRecycle />

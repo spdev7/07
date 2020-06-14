@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { FaMinusCircle, FaPlusCircle, FaTrash } from "react-icons/fa";
 
 const ButtonSet = (props) => {
-  
+
   const { count, setCount, handleNoi, i } = props;
   const [value, setValue] = useState(0);
   const [display, setDisplay] = useState(true);
 
   useEffect(() => {
     setValue(0);
-  }, [props.refresh]);
+  },[props.refresh]);
 
   return (
     <div className="row justify-content-center">
@@ -33,7 +33,6 @@ const ButtonSet = (props) => {
               onClick={() => {
                 setValue(value + 1);
                 handleNoi(+1, i);
-                console.log(value);
               }}
             >
               <FaPlusCircle />
@@ -52,7 +51,7 @@ const ButtonSet = (props) => {
               className="btn btn-danger"
               onClick={() => {
                 setCount(count - 1);
-                setDisplay(true);
+                // setDisplay(false);
                 handleNoi(-1, i);
               }}
             >

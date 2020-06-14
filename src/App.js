@@ -20,17 +20,15 @@ function App() {
   const count = new Set()
 
   const handleNoi = (newValue,i) => {
-    console.log({noi,newValue,i})
-    if(newValue == 1){
+
+    if(newValue === 1){
       count.add(i)
     }
-    if(newValue == -1){
+    if(newValue === -1){
       count.delete(i)
     }
-    console.log(count)
     Setnoi(count.size)
   }
-
 
   return (
     <div>

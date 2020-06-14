@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaRecycle } from "react-icons/fa";
 import { GrRefresh } from "react-icons/gr";
 import ButtonSet from "./ButtonSet";
+import { v4 as uuidv4} from 'uuid'
 
 const ButtonGrid = (props) => {
   const [refresh, setRefresh] = useState(false);
@@ -11,12 +12,12 @@ const ButtonGrid = (props) => {
 
   const renderBS = (count, setCount, refresh, handleNoi) => {
     let arr = [];
-
+    console.log(arr)
     for (let i = 0; i < count; i++) {
       arr.push(
         <ButtonSet
           key={i}
-          i={i}
+          i={uuidv4()}
           count={count}
           setCount={setCount}
           handleNoi={handleNoi}
@@ -24,12 +25,14 @@ const ButtonGrid = (props) => {
         />
       );
     }
+    console.log(arr)
     return arr && arr.map((ele) => ele);
   };
 
+
   useEffect(() => {
     setBs(renderBS(count, setCount, refresh, handleNoi));
-  }, [refresh, count]);
+  }, [refresh,count]);
 
   return (
     <div>

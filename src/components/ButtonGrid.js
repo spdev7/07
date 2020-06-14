@@ -12,8 +12,9 @@ const ButtonGrid = (props) => {
 
   const renderBS = (count, setCount, refresh, handleNoi) => {
     let arr = [];
-    console.log(arr)
-    for (let i = 0; i < count; i++) {
+
+    for (let i = 0; i < 4; i++) {
+
       arr.push(
         <ButtonSet
           key={i}
@@ -25,7 +26,7 @@ const ButtonGrid = (props) => {
         />
       );
     }
-    console.log(arr)
+
     return arr && arr.map((ele) => ele);
   };
 

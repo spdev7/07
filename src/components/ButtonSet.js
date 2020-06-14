@@ -51,7 +51,7 @@ const ButtonSet = (props) => {
               className="btn btn-danger"
               onClick={() => {
                 setCount(count - 1);
-                // setDisplay(false);
+                setDisplay(false);
                 handleNoi(-1, i);
               }}
             >
